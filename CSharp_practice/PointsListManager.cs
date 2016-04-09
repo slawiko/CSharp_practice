@@ -19,17 +19,17 @@ namespace CSharp_practice
 
 		private void Initialize()
 		{
-			this.commandDictionary.Add("add", Type.GetType("Sharp_dev_1.AddCommand"));
-			this.commandDictionary.Add("undo", Type.GetType("Sharp_dev_1.UndoCommand"));
-			this.commandDictionary.Add("format", Type.GetType("Sharp_dev_1.FormatCommand"));
-			this.commandDictionary.Add("list", Type.GetType("Sharp_dev_1.ListCommand"));
-			this.commandDictionary.Add("load", Type.GetType("Sharp_dev_1.LoadCommand"));
-			this.commandDictionary.Add("path", Type.GetType("Sharp_dev_1.PathCommand"));
-			this.commandDictionary.Add("remove", Type.GetType("Sharp_dev_1.RemoveCommand"));
-			this.commandDictionary.Add("save", Type.GetType("Sharp_dev_1.SaveCommand"));
-			this.commandDictionary.Add("sort", Type.GetType("Sharp_dev_1.SortCommand"));
-			this.commandDictionary.Add("exit", Type.GetType("Sharp_dev_1.ExitCommand"));
-			this.commandDictionary.Add("quit", Type.GetType("Sharp_dev_1.QuitCommand"));
+			this.commandDictionary.Add("add", Type.GetType("CSharp_practice.AddCommand"));
+			this.commandDictionary.Add("undo", Type.GetType("CSharp_practice.UndoCommand"));
+			this.commandDictionary.Add("format", Type.GetType("CSharp_practice.FormatCommand"));
+			this.commandDictionary.Add("list", Type.GetType("CSharp_practice.ListCommand"));
+			this.commandDictionary.Add("load", Type.GetType("CSharp_practice.LoadCommand"));
+			this.commandDictionary.Add("path", Type.GetType("CSharp_practice.PathCommand"));
+			this.commandDictionary.Add("remove", Type.GetType("CSharp_practice.RemoveCommand"));
+			this.commandDictionary.Add("save", Type.GetType("CSharp_practice.SaveCommand"));
+			this.commandDictionary.Add("sort", Type.GetType("CSharp_practice.SortCommand"));
+			this.commandDictionary.Add("exit", Type.GetType("CSharp_practice.ExitCommand"));
+			this.commandDictionary.Add("quit", Type.GetType("CSharp_practice.QuitCommand"));
 		}
 
 		public void Execute(ICommand command, string[] args)
