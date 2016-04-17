@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Command.Utils
+namespace ListManager.Command.Utils
 {
 	class InvalidArgumentsException : Exception
 	{

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\ListCommand.cs" />
+    <Compile Include="Command\Utils\UnsupportedCommandException.cs" />
     <Compile Include="ListForm.cs">
       <SubType>Form</SubType>
     </Compile>

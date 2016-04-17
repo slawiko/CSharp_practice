@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
-using Command.Utils;
+using ListManager.Command.Utils;
 
 namespace ListManagerApp
 {
@@ -38,17 +38,50 @@ namespace ListManagerApp
 
 		private void InitializeCommands()
 		{
-			this.commandDictionary.Add("add", Type.GetType("Command.Utils.AddCommand"));
-			this.commandDictionary.Add("undo", Type.GetType("Command.Utils.UndoCommand"));
-			this.commandDictionary.Add("format", Type.GetType("Command.Utils.FormatCommand"));
-			this.commandDictionary.Add("list", Type.GetType("Command.Utils.ListCommand"));
-			this.commandDictionary.Add("load", Type.GetType("Command.Utils.LoadCommand"));
-			this.commandDictionary.Add("path", Type.GetType("Command.Utils.PathCommand"));
-			this.commandDictionary.Add("remove", Type.GetType("Command.Utils.RemoveCommand"));
-			this.commandDictionary.Add("save", Type.GetType("Command.Utils.SaveCommand"));
-			this.commandDictionary.Add("sort", Type.GetType("Command.Utils.SortCommand"));
-			this.commandDictionary.Add("exit", Type.GetType("Command.Utils.ExitCommand"));
-			this.commandDictionary.Add("quit", Type.GetType("Command.Utils.QuitCommand"));
+			this.commandDictionary.Add("add", Type.GetType("ListManager.Command.AddCommand"));
+			this.commandDictionary.Add("undo", Type.GetType("ListManager.Command.UndoCommand"));
+			this.commandDictionary.Add("format", Type.GetType("ListManager.Command.FormatCommand"));
+			this.commandDictionary.Add("list", Type.GetType("ListManager.Command.ListCommand"));
+			this.commandDictionary.Add("load", Type.GetType("ListManager.Command.LoadCommand"));
+			this.commandDictionary.Add("path", Type.GetType("ListManager.Command.PathCommand"));
+			this.commandDictionary.Add("remove", Type.GetType("ListManager.Command.RemoveCommand"));
+			this.commandDictionary.Add("save", Type.GetType("ListManager.Command.SaveCommand"));
+			this.commandDictionary.Add("sort", Type.GetType("ListManager.Command.SortCommand"));
+			this.commandDictionary.Add("exit", Type.GetType("ListManager.Command.ExitCommand"));
+			this.commandDictionary.Add("quit", Type.GetType("ListManager.Command.QuitCommand"));
+		}
+
+		private void Execute(ICommand command, string[] args)
+		{
+			try
+			{
+				command.Execute(this.target, args, undoStack);
+			}
+			catch (NoSuchItemException nsi)
+			{
+				Console.WriteLine("No such item");
+			}
+			catch (InvalidArgumentsException ia)
+			{
+				Console.WriteLine("Invalid argument");
+			}
+			catch (UndoException u)
+			{
+				Console.WriteLine("Cannot undo");
+			}
+		}
+
+		private Type Instance(string type)
+		{
+			Type instance;
+			if (this.commandDictionary.TryGetValue(type, out instance))
+			{ 
+				return instance;
+			}
+			else
+			{
+				throw new UnsupportedCommandException();
+			}
 		}
 
 		#region Windows Form Designer generated code

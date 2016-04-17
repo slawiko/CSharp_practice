@@ -1,4 +1,4 @@
-﻿namespace Command.Utils
+﻿namespace ListManager.Command.Utils
 {
 	class Format
 	{

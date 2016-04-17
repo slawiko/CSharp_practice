@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using Command.Utils;
+using ListManager.Command.Utils;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +26,8 @@ namespace ListManagerApp
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			this.target.Add(new Point());
+			var arguments = AddTextBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+			Execute((ICommand)Activator.CreateInstance(Instance("add")), arguments);
 			BindData();
 		}
 

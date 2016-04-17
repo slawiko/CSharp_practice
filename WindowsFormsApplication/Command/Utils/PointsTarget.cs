@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Command.Utils
+namespace ListManager.Command.Utils
 {
 	class PointsTarget : ITarget
 	{

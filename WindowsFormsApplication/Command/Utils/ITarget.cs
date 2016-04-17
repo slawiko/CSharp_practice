@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Command.Utils
+namespace ListManager.Command.Utils
 {
 	interface ITarget : IEnumerable<Point>
 	{

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Command.Utils;
+using ListManager.Command.Utils;
 
-namespace Command
+namespace ListManager.Command
 {
 	class AddCommand : ICommand
 	{
@@ -15,9 +15,9 @@ namespace Command
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
 			this._point = new Point();
-			if (args.Length != 3 ||
-				!double.TryParse(args[1], out this._point.x) ||
-				!double.TryParse(args[2], out this._point.y))
+			if (args.Length != 2 ||
+				!double.TryParse(args[0], out this._point.x) ||
+				!double.TryParse(args[1], out this._point.y))
 			{
 				throw new InvalidArgumentsException();
 			}

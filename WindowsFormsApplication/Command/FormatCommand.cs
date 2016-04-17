@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Command.Utils;
+using ListManager.Command.Utils;
 
-namespace Command
+namespace ListManager.Command
 {
 	class FormatCommand : ICommand
 	{

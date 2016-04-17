@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Command.Utils;
+using ListManager.Command.Utils;
 
-namespace Command
+namespace CommandListManager.Command
 {
 	class LoadCommand : ICommand
 	{

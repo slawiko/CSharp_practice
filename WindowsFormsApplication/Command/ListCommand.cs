@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using ListManager.Command.Utils;
 
-namespace Command.Utils
+namespace ListManager.Command
 {
 	class ListCommand : ICommand
 	{
