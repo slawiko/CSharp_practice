@@ -24,26 +24,35 @@ namespace ListManagerApp
 			PointsList.DataSource = this.target.GetCollection();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void ProduceCommand(string name, string[] args)
+		{
+			Execute((ICommand)Activator.CreateInstance(Instance(name)), args);
+		}
+
+		private void AddButton_Click(object sender, EventArgs e)
 		{
 			var arguments = AddTextBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-			Execute((ICommand)Activator.CreateInstance(Instance("add")), arguments);
+			AddTextBox.Text = "";
+			ProduceCommand("add", arguments);
 			BindData();
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private void RemoveButton_Click(object sender, EventArgs e)
 		{
-			
+			//if (PointsList.SelectedIndices != null)
+			//{
+			//}
 		}
 
-		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+		private void ListForm_Load(object sender, EventArgs e)
 		{
-
+			PointsList.DataSource = (List<Point>)this.target.GetCollection();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void UndoButton_Click(object sender, EventArgs e)
 		{
-			PointsList.DataSource = this.target.GetCollection();
+			ProduceCommand("undo", new string[] { });
+			BindData();
 		}
 	}
 }

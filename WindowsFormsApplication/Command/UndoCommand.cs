@@ -19,7 +19,7 @@ namespace ListManager.Command
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
 			int n;
-			if (args.Length == 1)
+			if (args.Length == 0)
 			{
 				try
 				{
@@ -40,10 +40,9 @@ namespace ListManager.Command
 				catch (UndoException u)
 				{
 					Console.WriteLine(u.Message);
-					undoStack.RemoveLast();
 				}
 			}
-			else if (args[1].Equals("list"))
+			else if (args[0].Equals("list"))
 			{
 				Console.WriteLine("Previous commands:");
 				foreach (var command in undoStack)
@@ -52,7 +51,7 @@ namespace ListManager.Command
 				}
 				return;
 			}
-			else if (int.TryParse(args[1], out n))
+			else if (int.TryParse(args[0], out n))
 			{
 				while (undoStack.Last != null && n > 0)
 				{

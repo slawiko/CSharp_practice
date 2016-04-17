@@ -96,6 +96,7 @@ namespace ListManagerApp
 			this.AddButton = new System.Windows.Forms.Button();
 			this.RemoveButton = new System.Windows.Forms.Button();
 			this.AddTextBox = new System.Windows.Forms.TextBox();
+			this.UndoButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PointsList
@@ -106,9 +107,8 @@ namespace ListManagerApp
 			this.PointsList.FormattingEnabled = true;
 			this.PointsList.Location = new System.Drawing.Point(12, 12);
 			this.PointsList.Name = "PointsList";
-			this.PointsList.Size = new System.Drawing.Size(119, 121);
+			this.PointsList.Size = new System.Drawing.Size(119, 225);
 			this.PointsList.TabIndex = 0;
-			this.PointsList.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
 			// AddButton
 			// 
@@ -119,7 +119,7 @@ namespace ListManagerApp
 			this.AddButton.TabIndex = 1;
 			this.AddButton.Text = "Add";
 			this.AddButton.UseVisualStyleBackColor = true;
-			this.AddButton.Click += new System.EventHandler(this.button1_Click);
+			this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
 			// 
 			// RemoveButton
 			// 
@@ -130,7 +130,7 @@ namespace ListManagerApp
 			this.RemoveButton.TabIndex = 2;
 			this.RemoveButton.Text = "Remove";
 			this.RemoveButton.UseVisualStyleBackColor = true;
-			this.RemoveButton.Click += new System.EventHandler(this.button2_Click);
+			this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
 			// 
 			// AddTextBox
 			// 
@@ -140,11 +140,23 @@ namespace ListManagerApp
 			this.AddTextBox.Size = new System.Drawing.Size(74, 20);
 			this.AddTextBox.TabIndex = 3;
 			// 
+			// UndoButton
+			// 
+			this.UndoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.UndoButton.Location = new System.Drawing.Point(217, 217);
+			this.UndoButton.Name = "UndoButton";
+			this.UndoButton.Size = new System.Drawing.Size(62, 20);
+			this.UndoButton.TabIndex = 4;
+			this.UndoButton.Text = "Undo";
+			this.UndoButton.UseVisualStyleBackColor = true;
+			this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
+			// 
 			// ListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(291, 161);
+			this.ClientSize = new System.Drawing.Size(291, 249);
+			this.Controls.Add(this.UndoButton);
 			this.Controls.Add(this.AddTextBox);
 			this.Controls.Add(this.RemoveButton);
 			this.Controls.Add(this.AddButton);
@@ -153,10 +165,9 @@ namespace ListManagerApp
 			this.MinimumSize = new System.Drawing.Size(307, 117);
 			this.Name = "ListForm";
 			this.Text = "List";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Load += new System.EventHandler(this.ListForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
-
 		}
 
 		#endregion
@@ -165,6 +176,7 @@ namespace ListManagerApp
 		private System.Windows.Forms.Button AddButton;
 		private System.Windows.Forms.Button RemoveButton;
 		private System.Windows.Forms.TextBox AddTextBox;
+		private System.Windows.Forms.Button UndoButton;
 	}
 }
 
