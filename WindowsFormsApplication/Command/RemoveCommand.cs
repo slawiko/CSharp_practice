@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ListManager.Command.Utils;
 
-namespace CommandListManager.Command
+namespace ListManager.Command
 {
 	class RemoveCommand : ICommand
 	{
@@ -16,12 +16,12 @@ namespace CommandListManager.Command
 
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
-			if (int.TryParse(args[1], out this._index))
+			if (int.TryParse(args[0], out this._index))
 			{
 				this._target = target;
 				try
 				{
-					this._item = this._target.ElementAt(this._index - 1);
+					this._item = this._target.ElementAt(this._index);
 				}
 				catch (System.ArgumentOutOfRangeException aoor)
 				{
@@ -32,7 +32,7 @@ namespace CommandListManager.Command
 					throw new NoSuchItemException();
 				}
 			}
-			else if (args[1] == "all")
+			else if (args[0] == "all")
 			{
 				this._target = target;
 				this._backup = target.Clone();

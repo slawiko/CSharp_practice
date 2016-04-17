@@ -107,6 +107,7 @@ namespace ListManagerApp
 			this.PointsList.FormattingEnabled = true;
 			this.PointsList.Location = new System.Drawing.Point(12, 12);
 			this.PointsList.Name = "PointsList";
+			this.PointsList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.PointsList.Size = new System.Drawing.Size(119, 225);
 			this.PointsList.TabIndex = 0;
 			// 
@@ -168,6 +169,7 @@ namespace ListManagerApp
 			this.Load += new System.EventHandler(this.ListForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+
 		}
 
 		#endregion

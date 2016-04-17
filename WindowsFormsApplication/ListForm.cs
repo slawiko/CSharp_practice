@@ -39,9 +39,14 @@ namespace ListManagerApp
 
 		private void RemoveButton_Click(object sender, EventArgs e)
 		{
-			//if (PointsList.SelectedIndices != null)
-			//{
-			//}
+			if (PointsList.SelectedIndices != null)
+			{
+				for(var index = PointsList.SelectedIndices.Count - 1; index >= 0; --index)
+				{
+					ProduceCommand("remove", new string[] { PointsList.SelectedIndices[index].ToString() });
+				}
+				BindData();
+			}
 		}
 
 		private void ListForm_Load(object sender, EventArgs e)
