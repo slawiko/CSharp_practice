@@ -110,7 +110,7 @@ namespace ListManagerApp
 			this.PointsList.Location = new System.Drawing.Point(12, 12);
 			this.PointsList.Name = "PointsList";
 			this.PointsList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.PointsList.Size = new System.Drawing.Size(119, 225);
+			this.PointsList.Size = new System.Drawing.Size(119, 264);
 			this.PointsList.TabIndex = 0;
 			// 
 			// AddButton
@@ -146,7 +146,7 @@ namespace ListManagerApp
 			// UndoButton
 			// 
 			this.UndoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.UndoButton.Location = new System.Drawing.Point(217, 149);
+			this.UndoButton.Location = new System.Drawing.Point(217, 230);
 			this.UndoButton.Name = "UndoButton";
 			this.UndoButton.Size = new System.Drawing.Size(62, 20);
 			this.UndoButton.TabIndex = 4;
@@ -156,7 +156,8 @@ namespace ListManagerApp
 			// 
 			// ExitButton
 			// 
-			this.ExitButton.Location = new System.Drawing.Point(217, 214);
+			this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.ExitButton.Location = new System.Drawing.Point(217, 256);
 			this.ExitButton.Name = "ExitButton";
 			this.ExitButton.Size = new System.Drawing.Size(62, 20);
 			this.ExitButton.TabIndex = 5;
@@ -168,7 +169,7 @@ namespace ListManagerApp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(291, 249);
+			this.ClientSize = new System.Drawing.Size(291, 288);
 			this.Controls.Add(this.ExitButton);
 			this.Controls.Add(this.UndoButton);
 			this.Controls.Add(this.AddTextBox);
