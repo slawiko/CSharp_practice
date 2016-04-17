@@ -64,5 +64,11 @@ namespace ListManagerApp
 		{
 			ProduceCommand("exit", new string[] { });
 		}
+
+		private void SortButton_Click(object sender, EventArgs e)
+		{
+			ProduceCommand("sort", new string[] { });
+			RefreshListBox();
+		}
 	}
 }
