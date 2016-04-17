@@ -65,7 +65,6 @@
     <Compile Include="Command\Utils\NoSuchItemException.cs" />
     <Compile Include="Command\PathCommand.cs" />
     <Compile Include="Command\Utils\Point.cs" />
-    <Compile Include="PointsListManager.cs" />
     <Compile Include="Command\Utils\PointsTarget.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Command\QuitCommand.cs" />

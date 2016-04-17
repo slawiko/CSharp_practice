@@ -18,7 +18,7 @@ namespace ListManagerApp
 			InitializeListManager();
 		}
 
-		private void BindData()
+		private void RefreshListBox()
 		{
 			PointsList.DataSource = null;
 			PointsList.DataSource = this.target.GetCollection();
@@ -34,7 +34,7 @@ namespace ListManagerApp
 			var arguments = AddTextBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 			AddTextBox.Text = "";
 			ProduceCommand("add", arguments);
-			BindData();
+			RefreshListBox();
 		}
 
 		private void RemoveButton_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace ListManagerApp
 				{
 					ProduceCommand("remove", new string[] { PointsList.SelectedIndices[index].ToString() });
 				}
-				BindData();
+				RefreshListBox();
 			}
 		}
 
@@ -57,7 +57,12 @@ namespace ListManagerApp
 		private void UndoButton_Click(object sender, EventArgs e)
 		{
 			ProduceCommand("undo", new string[] { });
-			BindData();
+			RefreshListBox();
+		}
+
+		private void ExitButton_Click(object sender, EventArgs e)
+		{
+			ProduceCommand("exit", new string[] { });
 		}
 	}
 }

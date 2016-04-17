@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using ListManager.Command.Utils;
+using System.Windows.Forms;
 
 namespace ListManagerApp
 {
@@ -97,6 +98,7 @@ namespace ListManagerApp
 			this.RemoveButton = new System.Windows.Forms.Button();
 			this.AddTextBox = new System.Windows.Forms.TextBox();
 			this.UndoButton = new System.Windows.Forms.Button();
+			this.ExitButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// PointsList
@@ -144,7 +146,7 @@ namespace ListManagerApp
 			// UndoButton
 			// 
 			this.UndoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.UndoButton.Location = new System.Drawing.Point(217, 217);
+			this.UndoButton.Location = new System.Drawing.Point(217, 149);
 			this.UndoButton.Name = "UndoButton";
 			this.UndoButton.Size = new System.Drawing.Size(62, 20);
 			this.UndoButton.TabIndex = 4;
@@ -152,11 +154,22 @@ namespace ListManagerApp
 			this.UndoButton.UseVisualStyleBackColor = true;
 			this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
 			// 
+			// ExitButton
+			// 
+			this.ExitButton.Location = new System.Drawing.Point(217, 214);
+			this.ExitButton.Name = "ExitButton";
+			this.ExitButton.Size = new System.Drawing.Size(62, 20);
+			this.ExitButton.TabIndex = 5;
+			this.ExitButton.Text = "Exit";
+			this.ExitButton.UseVisualStyleBackColor = true;
+			this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+			// 
 			// ListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(291, 249);
+			this.Controls.Add(this.ExitButton);
 			this.Controls.Add(this.UndoButton);
 			this.Controls.Add(this.AddTextBox);
 			this.Controls.Add(this.RemoveButton);
@@ -179,6 +192,8 @@ namespace ListManagerApp
 		private System.Windows.Forms.Button RemoveButton;
 		private System.Windows.Forms.TextBox AddTextBox;
 		private System.Windows.Forms.Button UndoButton;
+		private System.Windows.Forms.Button button1;
+		private Button ExitButton;
 	}
 }
 
