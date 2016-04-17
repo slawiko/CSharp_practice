@@ -4,7 +4,7 @@ namespace ListManager.Command.Utils
 {
 	class NoSuchItemException : Exception
 	{
-		public NoSuchItemException() : base()
+		public NoSuchItemException() : base("No such item!")
 		{
 		}
 

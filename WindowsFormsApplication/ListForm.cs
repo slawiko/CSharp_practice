@@ -24,6 +24,14 @@ namespace ListManagerApp
 			PointsList.DataSource = this.target.GetCollection();
 		}
 
+		private void ShowWarningBox(Exception e)
+		{
+			string message = e.Message;
+			string caption = e.Message;
+			MessageBoxButtons buttons = MessageBoxButtons.OK;
+			MessageBox.Show(message, caption, buttons);
+		}
+
 		private void ProduceCommand(string name, string[] args)
 		{
 			Execute((ICommand)Activator.CreateInstance(Instance(name)), args);

@@ -4,7 +4,7 @@ namespace ListManager.Command.Utils
 {
 	class UnsupportedFormatException : Exception
 	{
-		public UnsupportedFormatException() : base()
+		public UnsupportedFormatException() : base("Unsupported format!")
 		{
 		}
 

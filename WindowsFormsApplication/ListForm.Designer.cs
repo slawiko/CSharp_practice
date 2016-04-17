@@ -60,15 +60,15 @@ namespace ListManagerApp
 			}
 			catch (NoSuchItemException nsi)
 			{
-				Console.WriteLine("No such item");
+				ShowWarningBox(nsi);
 			}
 			catch (InvalidArgumentsException ia)
 			{
-				Console.WriteLine("Invalid argument");
+				ShowWarningBox(ia);
 			}
 			catch (UndoException u)
 			{
-				Console.WriteLine("Cannot undo");
+				ShowWarningBox(u);
 			}
 		}
 

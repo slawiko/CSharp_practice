@@ -4,7 +4,7 @@ namespace ListManager.Command.Utils
 {
 	class UnsupportedCommandException : Exception
 	{
-		public UnsupportedCommandException() : base()
+		public UnsupportedCommandException() : base("Unsupported command!")
 		{
 		}
 

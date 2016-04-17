@@ -4,7 +4,7 @@ namespace ListManager.Command.Utils
 {
 	class InvalidArgumentsException : Exception
 	{
-		public InvalidArgumentsException() : base()
+		public InvalidArgumentsException() : base("Invaild arguments!")
 		{
 		}
 

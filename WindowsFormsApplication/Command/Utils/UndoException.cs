@@ -4,7 +4,7 @@ namespace ListManager.Command.Utils
 {
 	class UndoException : Exception
 	{
-		public UndoException() : base()
+		public UndoException() : base("Undo error!")
 		{
 		}
 
