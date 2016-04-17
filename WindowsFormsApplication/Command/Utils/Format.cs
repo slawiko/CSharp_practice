@@ -1,4 +1,4 @@
-﻿namespace CSharp_practice
+﻿namespace Command.Utils
 {
 	class Format
 	{

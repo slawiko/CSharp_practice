@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharp_practice
+namespace Command.Utils
 {
 	class Point : IComparable<Point>
 	{

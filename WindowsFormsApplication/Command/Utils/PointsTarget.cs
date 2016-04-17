@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CSharp_practice
+namespace Command.Utils
 {
 	class PointsTarget : ITarget
 	{
@@ -140,6 +140,11 @@ namespace CSharp_practice
 			this.list = tmp.list;
 			this.Count = tmp.Count;
 			this._format = tmp._format;
+		}
+
+		public IEnumerable<Point> GetCollection()
+		{
+			return this.list;
 		}
 	}
 }

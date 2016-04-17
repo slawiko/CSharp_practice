@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CSharp_practice
+namespace Command.Utils
 {
 	class ListCommand : ICommand
 	{

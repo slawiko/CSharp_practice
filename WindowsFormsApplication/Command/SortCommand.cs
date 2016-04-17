@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using Command.Utils;
 
-namespace CSharp_practice
+namespace Command
 {
 	class SortCommand : ICommand
 	{
 		private ITarget _target;
 		private ITarget _backup;
-		private bool _executed;
 
 		public SortCommand()
 		{
@@ -17,7 +17,6 @@ namespace CSharp_practice
 			this._target = target;
 			this._backup = target.Clone();
 			this._target.Sort();
-			this._executed = true;
 			undoStack.AddLast(this);
 		}
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CSharp_practice
+namespace Command.Utils
 {
 	interface ITarget : IEnumerable<Point>
 	{
@@ -18,5 +18,6 @@ namespace CSharp_practice
 		Format GetFormat();
 		ITarget Clone();
 		void ReplaceAll(ITarget target);
+		IEnumerable<Point> GetCollection();
 	}
 }

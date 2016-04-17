@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Command.Utils;
 
-namespace CSharp_practice
+namespace Command
 {
 	class SaveCommand : ICommand
 	{
-		private ITarget _target;
 		private string _path;
 
 		public SaveCommand()

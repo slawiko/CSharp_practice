@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Command.Utils;
 
-namespace CSharp_practice
+namespace Command
 {
 	class ExitCommand : ICommand
 	{

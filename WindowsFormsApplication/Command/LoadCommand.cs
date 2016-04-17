@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Command.Utils;
 
-namespace CSharp_practice
+namespace Command
 {
 	class LoadCommand : ICommand
 	{
@@ -48,7 +49,6 @@ namespace CSharp_practice
 			char[] delims = {' ', ',', ';', '<', '>', '\"'};
 			string[] words = line.Split(delims);
 			bool x = false;
-			bool y = false;
 
 			foreach (var word in words)
 			{
@@ -59,7 +59,6 @@ namespace CSharp_practice
 				}
 				if (double.TryParse(word, out p.y))
 				{
-					y = true;
 					break;
 				}
 			}

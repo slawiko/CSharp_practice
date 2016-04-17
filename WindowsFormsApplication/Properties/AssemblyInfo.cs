@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSharp_practice")]
+[assembly: AssemblyTitle("WindowsFormsApplication1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSharp_practice")]
+[assembly: AssemblyProduct("WindowsFormsApplication1")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("53b39b5b-7798-44e3-9eca-06c4356dbb51")]
+[assembly: Guid("6836e60b-7c48-4bfa-b03d-0e7333d1f30e")]
 
 // Version information for an assembly consists of the following four values:
 //
