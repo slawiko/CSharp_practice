@@ -15,23 +15,23 @@ namespace ListManager.Command
 
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
-			if (string.IsNullOrEmpty(args[1]))
+			if (string.IsNullOrEmpty(args[0]))
 			{
 				throw new InvalidArgumentsException();
 			}
-			if (args[1].Equals("?"))
+			if (args[0].Equals("?"))
 			{
 				System.Console.WriteLine(Format.SupportedFormats());
 				return;
 			}
-			if (!args[1].Equals("short") && 
-				!args[1].Equals("long") &&
-				!args[1].Equals("json") &&
-				!args[1].Equals("tag"))
+			if (!args[0].Equals("short") && 
+				!args[0].Equals("long") &&
+				!args[0].Equals("json") &&
+				!args[0].Equals("tag"))
 			{
 				throw new InvalidArgumentsException();
 			}
-			this._format = new Format(args[1]);
+			this._format = new Format(args[0]);
 			this._target = target;
 			this._backup = this._target.GetFormat();
 			this._target.SetFormat(this._format);

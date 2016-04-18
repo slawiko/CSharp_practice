@@ -40,6 +40,7 @@ namespace ListManager.Command.Utils
 
 		public void Add(Point item)
 		{
+			item.SetFormat(this._format);
 			this.list.Add(item);
 			this.Count++;
 		}

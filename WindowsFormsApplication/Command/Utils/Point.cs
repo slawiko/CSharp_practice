@@ -116,10 +116,7 @@ namespace ListManager.Command.Utils
 
 		private string JSONFormat()
 		{
-			return "{" + Environment.NewLine + 
-				"  \"x\": \"" + this.x + "\"," + Environment.NewLine + 
-				"  \"y\": \"" + this.y + "\"" + Environment.NewLine +
-				"}";
+			return "{ \"x\": \"" + this.x + "\",  \"y\": \"" + this.y + "\" }";
 		}
 	}
 }

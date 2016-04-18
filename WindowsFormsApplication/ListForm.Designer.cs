@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using ListManager.Command.Utils;
 using System.Windows.Forms;
 
 namespace ListManagerApp
@@ -11,10 +10,6 @@ namespace ListManagerApp
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-
-		private PointsTarget target;
-		private LinkedList<ICommand> undoStack;
-		private Dictionary<string, Type> commandDictionary;
 
 		/// <summary>
 		/// Clean up any resources being used.
@@ -27,62 +22,6 @@ namespace ListManagerApp
 				components.Dispose();
 			}
 			base.Dispose(disposing);
-		}
-
-		private void InitializeListManager()
-		{
-			this.target = new PointsTarget(new List<Point>());
-			this.undoStack = new LinkedList<ICommand>();
-			this.commandDictionary = new Dictionary<string, Type>();
-			this.InitializeCommands();
-		}
-
-		private void InitializeCommands()
-		{
-			this.commandDictionary.Add("add", Type.GetType("ListManager.Command.AddCommand"));
-			this.commandDictionary.Add("undo", Type.GetType("ListManager.Command.UndoCommand"));
-			this.commandDictionary.Add("format", Type.GetType("ListManager.Command.FormatCommand"));
-			this.commandDictionary.Add("list", Type.GetType("ListManager.Command.ListCommand"));
-			this.commandDictionary.Add("load", Type.GetType("ListManager.Command.LoadCommand"));
-			this.commandDictionary.Add("path", Type.GetType("ListManager.Command.PathCommand"));
-			this.commandDictionary.Add("remove", Type.GetType("ListManager.Command.RemoveCommand"));
-			this.commandDictionary.Add("save", Type.GetType("ListManager.Command.SaveCommand"));
-			this.commandDictionary.Add("sort", Type.GetType("ListManager.Command.SortCommand"));
-			this.commandDictionary.Add("exit", Type.GetType("ListManager.Command.ExitCommand"));
-			this.commandDictionary.Add("quit", Type.GetType("ListManager.Command.QuitCommand"));
-		}
-
-		private void Execute(ICommand command, string[] args)
-		{
-			try
-			{
-				command.Execute(this.target, args, undoStack);
-			}
-			catch (NoSuchItemException nsi)
-			{
-				ShowWarningBox(nsi);
-			}
-			catch (InvalidArgumentsException ia)
-			{
-				ShowWarningBox(ia);
-			}
-			catch (UndoException u)
-			{
-				ShowWarningBox(u);
-			}
-		}
-
-		private Type Instance(string type)
-		{
-			Type instance;
-			if (this.commandDictionary.TryGetValue(type, out instance))
-			{ 
-				return instance;
-			}
-			else
-			{
-				throw new UnsupportedCommandException();
-			}
 		}
 
 		#region Windows Form Designer generated code
@@ -101,11 +40,20 @@ namespace ListManagerApp
 			this.ExitButton = new System.Windows.Forms.Button();
 			this.SortButton = new System.Windows.Forms.Button();
 			this.FormatButton = new System.Windows.Forms.Button();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.LongRadioButton = new System.Windows.Forms.RadioButton();
 			this.AddGroupBox = new System.Windows.Forms.GroupBox();
 			this.RemoveGroupBox = new System.Windows.Forms.GroupBox();
+			this.UndoGroupBox = new System.Windows.Forms.GroupBox();
+			this.SortGroupBox = new System.Windows.Forms.GroupBox();
+			this.FormatGroupBox = new System.Windows.Forms.GroupBox();
+			this.JSONRadioButton = new System.Windows.Forms.RadioButton();
+			this.TagRadioButton = new System.Windows.Forms.RadioButton();
+			this.ShortRadioButton = new System.Windows.Forms.RadioButton();
 			this.AddGroupBox.SuspendLayout();
 			this.RemoveGroupBox.SuspendLayout();
+			this.UndoGroupBox.SuspendLayout();
+			this.SortGroupBox.SuspendLayout();
+			this.FormatGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// PointsList
@@ -116,7 +64,7 @@ namespace ListManagerApp
 			this.PointsList.Location = new System.Drawing.Point(12, 12);
 			this.PointsList.Name = "PointsList";
 			this.PointsList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.PointsList.Size = new System.Drawing.Size(122, 303);
+			this.PointsList.Size = new System.Drawing.Size(122, 329);
 			this.PointsList.TabIndex = 0;
 			// 
 			// AddButton
@@ -148,8 +96,7 @@ namespace ListManagerApp
 			// 
 			// UndoButton
 			// 
-			this.UndoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.UndoButton.Location = new System.Drawing.Point(170, 218);
+			this.UndoButton.Location = new System.Drawing.Point(6, 19);
 			this.UndoButton.Name = "UndoButton";
 			this.UndoButton.Size = new System.Drawing.Size(62, 20);
 			this.UndoButton.TabIndex = 4;
@@ -160,7 +107,7 @@ namespace ListManagerApp
 			// ExitButton
 			// 
 			this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ExitButton.Location = new System.Drawing.Point(322, 291);
+			this.ExitButton.Location = new System.Drawing.Point(267, 319);
 			this.ExitButton.Name = "ExitButton";
 			this.ExitButton.Size = new System.Drawing.Size(62, 20);
 			this.ExitButton.TabIndex = 5;
@@ -170,8 +117,7 @@ namespace ListManagerApp
 			// 
 			// SortButton
 			// 
-			this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.SortButton.Location = new System.Drawing.Point(226, 175);
+			this.SortButton.Location = new System.Drawing.Point(6, 19);
 			this.SortButton.Name = "SortButton";
 			this.SortButton.Size = new System.Drawing.Size(62, 20);
 			this.SortButton.TabIndex = 6;
@@ -181,24 +127,25 @@ namespace ListManagerApp
 			// 
 			// FormatButton
 			// 
-			this.FormatButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.FormatButton.Location = new System.Drawing.Point(204, 259);
+			this.FormatButton.Location = new System.Drawing.Point(128, 17);
 			this.FormatButton.Name = "FormatButton";
 			this.FormatButton.Size = new System.Drawing.Size(62, 20);
 			this.FormatButton.TabIndex = 7;
 			this.FormatButton.Text = "Format";
 			this.FormatButton.UseVisualStyleBackColor = true;
+			this.FormatButton.Click += new System.EventHandler(this.FormatButton_Click);
 			// 
-			// radioButton1
+			// LongRadioButton
 			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(267, 221);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(85, 17);
-			this.radioButton1.TabIndex = 8;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "radioButton1";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.LongRadioButton.AutoSize = true;
+			this.LongRadioButton.Location = new System.Drawing.Point(6, 19);
+			this.LongRadioButton.Name = "LongRadioButton";
+			this.LongRadioButton.Size = new System.Drawing.Size(49, 17);
+			this.LongRadioButton.TabIndex = 8;
+			this.LongRadioButton.TabStop = true;
+			this.LongRadioButton.Text = "Long";
+			this.LongRadioButton.UseVisualStyleBackColor = true;
+			this.LongRadioButton.CheckedChanged += new System.EventHandler(this.LongRadioButton_CheckedChanged);
 			// 
 			// AddGroupBox
 			// 
@@ -208,7 +155,7 @@ namespace ListManagerApp
 			this.AddGroupBox.Controls.Add(this.AddButton);
 			this.AddGroupBox.Location = new System.Drawing.Point(140, 12);
 			this.AddGroupBox.Name = "AddGroupBox";
-			this.AddGroupBox.Size = new System.Drawing.Size(251, 54);
+			this.AddGroupBox.Size = new System.Drawing.Size(196, 50);
 			this.AddGroupBox.TabIndex = 9;
 			this.AddGroupBox.TabStop = false;
 			this.AddGroupBox.Text = "Enter two integers:";
@@ -218,35 +165,113 @@ namespace ListManagerApp
 			this.RemoveGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.RemoveGroupBox.Controls.Add(this.RemoveButton);
-			this.RemoveGroupBox.Location = new System.Drawing.Point(140, 72);
+			this.RemoveGroupBox.Location = new System.Drawing.Point(140, 68);
 			this.RemoveGroupBox.Name = "RemoveGroupBox";
-			this.RemoveGroupBox.Size = new System.Drawing.Size(251, 54);
+			this.RemoveGroupBox.Size = new System.Drawing.Size(196, 50);
 			this.RemoveGroupBox.TabIndex = 10;
 			this.RemoveGroupBox.TabStop = false;
 			this.RemoveGroupBox.Text = "Choose item(s):";
+			// 
+			// UndoGroupBox
+			// 
+			this.UndoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.UndoGroupBox.Controls.Add(this.UndoButton);
+			this.UndoGroupBox.Location = new System.Drawing.Point(140, 124);
+			this.UndoGroupBox.Name = "UndoGroupBox";
+			this.UndoGroupBox.Size = new System.Drawing.Size(196, 50);
+			this.UndoGroupBox.TabIndex = 11;
+			this.UndoGroupBox.TabStop = false;
+			this.UndoGroupBox.Text = "Undo last command:";
+			// 
+			// SortGroupBox
+			// 
+			this.SortGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.SortGroupBox.Controls.Add(this.SortButton);
+			this.SortGroupBox.Location = new System.Drawing.Point(140, 180);
+			this.SortGroupBox.Name = "SortGroupBox";
+			this.SortGroupBox.Size = new System.Drawing.Size(196, 50);
+			this.SortGroupBox.TabIndex = 12;
+			this.SortGroupBox.TabStop = false;
+			this.SortGroupBox.Text = "Sort:";
+			// 
+			// FormatGroupBox
+			// 
+			this.FormatGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.FormatGroupBox.Controls.Add(this.JSONRadioButton);
+			this.FormatGroupBox.Controls.Add(this.TagRadioButton);
+			this.FormatGroupBox.Controls.Add(this.ShortRadioButton);
+			this.FormatGroupBox.Controls.Add(this.FormatButton);
+			this.FormatGroupBox.Controls.Add(this.LongRadioButton);
+			this.FormatGroupBox.Location = new System.Drawing.Point(140, 236);
+			this.FormatGroupBox.Name = "FormatGroupBox";
+			this.FormatGroupBox.Size = new System.Drawing.Size(196, 70);
+			this.FormatGroupBox.TabIndex = 13;
+			this.FormatGroupBox.TabStop = false;
+			this.FormatGroupBox.Text = "Choose format:";
+			// 
+			// JSONRadioButton
+			// 
+			this.JSONRadioButton.AutoSize = true;
+			this.JSONRadioButton.Location = new System.Drawing.Point(61, 43);
+			this.JSONRadioButton.Name = "JSONRadioButton";
+			this.JSONRadioButton.Size = new System.Drawing.Size(53, 17);
+			this.JSONRadioButton.TabIndex = 11;
+			this.JSONRadioButton.TabStop = true;
+			this.JSONRadioButton.Text = "JSON";
+			this.JSONRadioButton.UseVisualStyleBackColor = true;
+			this.JSONRadioButton.CheckedChanged += new System.EventHandler(this.JSONRadioButton_CheckedChanged);
+			// 
+			// TagRadioButton
+			// 
+			this.TagRadioButton.AutoSize = true;
+			this.TagRadioButton.Location = new System.Drawing.Point(61, 19);
+			this.TagRadioButton.Name = "TagRadioButton";
+			this.TagRadioButton.Size = new System.Drawing.Size(44, 17);
+			this.TagRadioButton.TabIndex = 10;
+			this.TagRadioButton.TabStop = true;
+			this.TagRadioButton.Text = "Tag";
+			this.TagRadioButton.UseVisualStyleBackColor = true;
+			this.TagRadioButton.CheckedChanged += new System.EventHandler(this.TagRadioButton_CheckedChanged);
+			// 
+			// ShortRadioButton
+			// 
+			this.ShortRadioButton.AutoSize = true;
+			this.ShortRadioButton.Location = new System.Drawing.Point(6, 43);
+			this.ShortRadioButton.Name = "ShortRadioButton";
+			this.ShortRadioButton.Size = new System.Drawing.Size(50, 17);
+			this.ShortRadioButton.TabIndex = 9;
+			this.ShortRadioButton.TabStop = true;
+			this.ShortRadioButton.Text = "Short";
+			this.ShortRadioButton.UseVisualStyleBackColor = true;
+			this.ShortRadioButton.CheckedChanged += new System.EventHandler(this.ShortRadioButton_CheckedChanged);
 			// 
 			// ListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(399, 323);
+			this.ClientSize = new System.Drawing.Size(344, 351);
+			this.Controls.Add(this.FormatGroupBox);
+			this.Controls.Add(this.SortGroupBox);
+			this.Controls.Add(this.UndoGroupBox);
 			this.Controls.Add(this.RemoveGroupBox);
 			this.Controls.Add(this.AddGroupBox);
-			this.Controls.Add(this.radioButton1);
-			this.Controls.Add(this.FormatButton);
-			this.Controls.Add(this.SortButton);
 			this.Controls.Add(this.ExitButton);
-			this.Controls.Add(this.UndoButton);
 			this.Controls.Add(this.PointsList);
-			this.MinimumSize = new System.Drawing.Size(318, 39);
+			this.MinimumSize = new System.Drawing.Size(360, 390);
 			this.Name = "ListForm";
 			this.Text = "List";
 			this.Load += new System.EventHandler(this.ListForm_Load);
 			this.AddGroupBox.ResumeLayout(false);
 			this.AddGroupBox.PerformLayout();
 			this.RemoveGroupBox.ResumeLayout(false);
+			this.UndoGroupBox.ResumeLayout(false);
+			this.SortGroupBox.ResumeLayout(false);
+			this.FormatGroupBox.ResumeLayout(false);
+			this.FormatGroupBox.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
@@ -260,9 +285,15 @@ namespace ListManagerApp
 		private Button ExitButton;
 		private Button SortButton;
 		private Button FormatButton;
-		private RadioButton radioButton1;
+		private RadioButton LongRadioButton;
 		private GroupBox AddGroupBox;
 		private GroupBox RemoveGroupBox;
+		private GroupBox UndoGroupBox;
+		private GroupBox SortGroupBox;
+		private GroupBox FormatGroupBox;
+		private RadioButton JSONRadioButton;
+		private RadioButton TagRadioButton;
+		private RadioButton ShortRadioButton;
 	}
 }
 
