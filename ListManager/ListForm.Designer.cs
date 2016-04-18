@@ -42,8 +42,9 @@ namespace ListManagerApp
 			this.FormatButton = new System.Windows.Forms.Button();
 			this.LongRadioButton = new System.Windows.Forms.RadioButton();
 			this.AddGroupBox = new System.Windows.Forms.GroupBox();
-			this.AddXLabel = new System.Windows.Forms.Label();
+			this.AddYLabel = new System.Windows.Forms.Label();
 			this.AddYTextBox = new System.Windows.Forms.TextBox();
+			this.AddXLabel = new System.Windows.Forms.Label();
 			this.RemoveGroupBox = new System.Windows.Forms.GroupBox();
 			this.UndoGroupBox = new System.Windows.Forms.GroupBox();
 			this.SortGroupBox = new System.Windows.Forms.GroupBox();
@@ -55,7 +56,6 @@ namespace ListManagerApp
 			this.LoadCommandDialog = new System.Windows.Forms.OpenFileDialog();
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.SaveCommandDialog = new System.Windows.Forms.SaveFileDialog();
-			this.AddYLabel = new System.Windows.Forms.Label();
 			this.AddGroupBox.SuspendLayout();
 			this.RemoveGroupBox.SuspendLayout();
 			this.UndoGroupBox.SuspendLayout();
@@ -80,7 +80,7 @@ namespace ListManagerApp
 			this.AddButton.Location = new System.Drawing.Point(130, 20);
 			this.AddButton.Name = "AddButton";
 			this.AddButton.Size = new System.Drawing.Size(60, 20);
-			this.AddButton.TabIndex = 1;
+			this.AddButton.TabIndex = 2;
 			this.AddButton.Text = "Add";
 			this.AddButton.UseVisualStyleBackColor = true;
 			this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -172,6 +172,22 @@ namespace ListManagerApp
 			this.AddGroupBox.TabStop = false;
 			this.AddGroupBox.Text = "Enter two integers:";
 			// 
+			// AddYLabel
+			// 
+			this.AddYLabel.AutoSize = true;
+			this.AddYLabel.Location = new System.Drawing.Point(58, 23);
+			this.AddYLabel.Name = "AddYLabel";
+			this.AddYLabel.Size = new System.Drawing.Size(15, 13);
+			this.AddYLabel.TabIndex = 4;
+			this.AddYLabel.Text = "y:";
+			// 
+			// AddYTextBox
+			// 
+			this.AddYTextBox.Location = new System.Drawing.Point(73, 20);
+			this.AddYTextBox.Name = "AddYTextBox";
+			this.AddYTextBox.Size = new System.Drawing.Size(35, 20);
+			this.AddYTextBox.TabIndex = 1;
+			// 
 			// AddXLabel
 			// 
 			this.AddXLabel.AutoSize = true;
@@ -180,13 +196,6 @@ namespace ListManagerApp
 			this.AddXLabel.Size = new System.Drawing.Size(15, 13);
 			this.AddXLabel.TabIndex = 3;
 			this.AddXLabel.Text = "x:";
-			// 
-			// AddYTextBox
-			// 
-			this.AddYTextBox.Location = new System.Drawing.Point(73, 20);
-			this.AddYTextBox.Name = "AddYTextBox";
-			this.AddYTextBox.Size = new System.Drawing.Size(35, 20);
-			this.AddYTextBox.TabIndex = 2;
 			// 
 			// RemoveGroupBox
 			// 
@@ -297,15 +306,6 @@ namespace ListManagerApp
 			this.SaveButton.Text = "Save";
 			this.SaveButton.UseVisualStyleBackColor = true;
 			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-			// 
-			// AddYLabel
-			// 
-			this.AddYLabel.AutoSize = true;
-			this.AddYLabel.Location = new System.Drawing.Point(58, 23);
-			this.AddYLabel.Name = "AddYLabel";
-			this.AddYLabel.Size = new System.Drawing.Size(15, 13);
-			this.AddYLabel.TabIndex = 4;
-			this.AddYLabel.Text = "y:";
 			// 
 			// ListForm
 			// 
