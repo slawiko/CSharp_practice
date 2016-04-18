@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using ListManager.Command.Utils;
 
-namespace CommandListManager.Command
+namespace ListManager.Command
 {
 	class LoadCommand : ICommand
 	{
@@ -13,11 +13,11 @@ namespace CommandListManager.Command
 
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
-			if (String.IsNullOrEmpty(args[1]))
+			if (String.IsNullOrEmpty(args[0]))
 			{
 				throw new InvalidArgumentsException();
 			}
-			this._path = args[1];
+			this._path = args[0];
 			this._target = target;
 			this._backup = target.Clone();
 			try

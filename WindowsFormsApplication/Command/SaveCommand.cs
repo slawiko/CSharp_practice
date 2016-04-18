@@ -15,11 +15,11 @@ namespace ListManager.Command
 
 		public void Execute(ITarget target, string[] args, LinkedList<ICommand> undoStack)
 		{
-			if (String.IsNullOrEmpty(args[1]))
+			if (String.IsNullOrEmpty(args[0]))
 			{
 				throw new InvalidArgumentsException();
 			}
-			this._path = args[1];
+			this._path = args[0];
 
 			int i = 1;
 			try

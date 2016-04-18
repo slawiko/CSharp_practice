@@ -166,5 +166,24 @@ namespace ListManagerApp
 			this.target.SetFormat(this.checkedFormat);
 			RefreshListBox();
 		}
+
+		private void LoadButton_Click(object sender, EventArgs e)
+		{
+			DialogResult result = LoadCommandDialog.ShowDialog();
+			if (DialogResult.OK.Equals(result))
+			{
+				ProduceCommand("load", new string[] { LoadCommandDialog.FileName });
+				RefreshListBox();
+			}
+		}
+
+		private void SaveButton_Click(object sender, EventArgs e)
+		{
+			DialogResult result = SaveCommandDialog.ShowDialog();
+			if (DialogResult.OK.Equals(result))
+			{
+				ProduceCommand("save", new string[] { SaveCommandDialog.FileName });
+			}
+		}
 	}
 }
