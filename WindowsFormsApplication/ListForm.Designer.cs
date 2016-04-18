@@ -35,13 +35,15 @@ namespace ListManagerApp
 			this.PointsList = new System.Windows.Forms.ListBox();
 			this.AddButton = new System.Windows.Forms.Button();
 			this.RemoveButton = new System.Windows.Forms.Button();
-			this.AddTextBox = new System.Windows.Forms.TextBox();
+			this.AddXTextBox = new System.Windows.Forms.TextBox();
 			this.UndoButton = new System.Windows.Forms.Button();
 			this.ExitButton = new System.Windows.Forms.Button();
 			this.SortButton = new System.Windows.Forms.Button();
 			this.FormatButton = new System.Windows.Forms.Button();
 			this.LongRadioButton = new System.Windows.Forms.RadioButton();
 			this.AddGroupBox = new System.Windows.Forms.GroupBox();
+			this.AddXLabel = new System.Windows.Forms.Label();
+			this.AddYTextBox = new System.Windows.Forms.TextBox();
 			this.RemoveGroupBox = new System.Windows.Forms.GroupBox();
 			this.UndoGroupBox = new System.Windows.Forms.GroupBox();
 			this.SortGroupBox = new System.Windows.Forms.GroupBox();
@@ -53,6 +55,7 @@ namespace ListManagerApp
 			this.LoadCommandDialog = new System.Windows.Forms.OpenFileDialog();
 			this.SaveButton = new System.Windows.Forms.Button();
 			this.SaveCommandDialog = new System.Windows.Forms.SaveFileDialog();
+			this.AddYLabel = new System.Windows.Forms.Label();
 			this.AddGroupBox.SuspendLayout();
 			this.RemoveGroupBox.SuspendLayout();
 			this.UndoGroupBox.SuspendLayout();
@@ -74,7 +77,7 @@ namespace ListManagerApp
 			// 
 			// AddButton
 			// 
-			this.AddButton.Location = new System.Drawing.Point(86, 19);
+			this.AddButton.Location = new System.Drawing.Point(130, 20);
 			this.AddButton.Name = "AddButton";
 			this.AddButton.Size = new System.Drawing.Size(60, 20);
 			this.AddButton.TabIndex = 1;
@@ -92,12 +95,13 @@ namespace ListManagerApp
 			this.RemoveButton.UseVisualStyleBackColor = true;
 			this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
 			// 
-			// AddTextBox
+			// AddXTextBox
 			// 
-			this.AddTextBox.Location = new System.Drawing.Point(6, 19);
-			this.AddTextBox.Name = "AddTextBox";
-			this.AddTextBox.Size = new System.Drawing.Size(74, 20);
-			this.AddTextBox.TabIndex = 0;
+			this.AddXTextBox.Location = new System.Drawing.Point(21, 20);
+			this.AddXTextBox.Name = "AddXTextBox";
+			this.AddXTextBox.Size = new System.Drawing.Size(35, 20);
+			this.AddXTextBox.TabIndex = 0;
+			this.AddXTextBox.WordWrap = false;
 			// 
 			// UndoButton
 			// 
@@ -156,7 +160,10 @@ namespace ListManagerApp
 			// 
 			this.AddGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddGroupBox.Controls.Add(this.AddTextBox);
+			this.AddGroupBox.Controls.Add(this.AddYLabel);
+			this.AddGroupBox.Controls.Add(this.AddXTextBox);
+			this.AddGroupBox.Controls.Add(this.AddYTextBox);
+			this.AddGroupBox.Controls.Add(this.AddXLabel);
 			this.AddGroupBox.Controls.Add(this.AddButton);
 			this.AddGroupBox.Location = new System.Drawing.Point(140, 12);
 			this.AddGroupBox.Name = "AddGroupBox";
@@ -164,6 +171,22 @@ namespace ListManagerApp
 			this.AddGroupBox.TabIndex = 0;
 			this.AddGroupBox.TabStop = false;
 			this.AddGroupBox.Text = "Enter two integers:";
+			// 
+			// AddXLabel
+			// 
+			this.AddXLabel.AutoSize = true;
+			this.AddXLabel.Location = new System.Drawing.Point(6, 23);
+			this.AddXLabel.Name = "AddXLabel";
+			this.AddXLabel.Size = new System.Drawing.Size(15, 13);
+			this.AddXLabel.TabIndex = 3;
+			this.AddXLabel.Text = "x:";
+			// 
+			// AddYTextBox
+			// 
+			this.AddYTextBox.Location = new System.Drawing.Point(73, 20);
+			this.AddYTextBox.Name = "AddYTextBox";
+			this.AddYTextBox.Size = new System.Drawing.Size(35, 20);
+			this.AddYTextBox.TabIndex = 2;
 			// 
 			// RemoveGroupBox
 			// 
@@ -275,6 +298,15 @@ namespace ListManagerApp
 			this.SaveButton.UseVisualStyleBackColor = true;
 			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
 			// 
+			// AddYLabel
+			// 
+			this.AddYLabel.AutoSize = true;
+			this.AddYLabel.Location = new System.Drawing.Point(58, 23);
+			this.AddYLabel.Name = "AddYLabel";
+			this.AddYLabel.Size = new System.Drawing.Size(15, 13);
+			this.AddYLabel.TabIndex = 4;
+			this.AddYLabel.Text = "y:";
+			// 
 			// ListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +341,7 @@ namespace ListManagerApp
 		private System.Windows.Forms.ListBox PointsList;
 		private System.Windows.Forms.Button AddButton;
 		private System.Windows.Forms.Button RemoveButton;
-		private System.Windows.Forms.TextBox AddTextBox;
+		private System.Windows.Forms.TextBox AddXTextBox;
 		private System.Windows.Forms.Button UndoButton;
 		private Button ExitButton;
 		private Button SortButton;
@@ -327,6 +359,9 @@ namespace ListManagerApp
 		private OpenFileDialog LoadCommandDialog;
 		private Button SaveButton;
 		private SaveFileDialog SaveCommandDialog;
+		private Label AddXLabel;
+		private TextBox AddYTextBox;
+		private Label AddYLabel;
 	}
 }
 

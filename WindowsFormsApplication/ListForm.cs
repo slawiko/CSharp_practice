@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using ListManager.Command.Utils;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ListManagerApp
@@ -101,8 +96,16 @@ namespace ListManagerApp
 
 		private void AddButton_Click(object sender, EventArgs e)
 		{
-			var arguments = AddTextBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-			AddTextBox.Text = "";
+			if (String.IsNullOrEmpty(AddXTextBox.Text) || String.IsNullOrEmpty(AddYTextBox.Text))
+			{
+				return;
+			}
+			string x = AddXTextBox.Text.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries)[0];
+			string y = AddYTextBox.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+			string[] arguments = new string[] { x, y };
+
+			AddXTextBox.Text = "";
+			AddYTextBox.Text = "";
 			ProduceCommand("add", arguments);
 			RefreshListBox();
 		}
