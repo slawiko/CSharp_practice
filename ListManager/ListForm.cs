@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ListManager.Command.Utils;
 using System.Windows.Forms;
 
-namespace ListManagerApp
+namespace ListManager
 {
 	public partial class ListForm : Form
 	{
@@ -29,17 +29,17 @@ namespace ListManagerApp
 
 		private void InitializeCommands()
 		{
-			this.commandDictionary.Add("add", Type.GetType("ListManager.Command.AddCommand"));
-			this.commandDictionary.Add("undo", Type.GetType("ListManager.Command.UndoCommand"));
-			this.commandDictionary.Add("format", Type.GetType("ListManager.Command.FormatCommand"));
-			this.commandDictionary.Add("list", Type.GetType("ListManager.Command.ListCommand"));
-			this.commandDictionary.Add("load", Type.GetType("ListManager.Command.LoadCommand"));
-			this.commandDictionary.Add("path", Type.GetType("ListManager.Command.PathCommand"));
-			this.commandDictionary.Add("remove", Type.GetType("ListManager.Command.RemoveCommand"));
-			this.commandDictionary.Add("save", Type.GetType("ListManager.Command.SaveCommand"));
-			this.commandDictionary.Add("sort", Type.GetType("ListManager.Command.SortCommand"));
-			this.commandDictionary.Add("exit", Type.GetType("ListManager.Command.ExitCommand"));
-			this.commandDictionary.Add("quit", Type.GetType("ListManager.Command.QuitCommand"));
+			this.commandDictionary.Add("add", Type.GetType("ListManager.Command.AddCommand", true));
+			this.commandDictionary.Add("undo", Type.GetType("ListManager.Command.UndoCommand", true));
+			this.commandDictionary.Add("format", Type.GetType("ListManager.Command.FormatCommand", true));
+			this.commandDictionary.Add("list", Type.GetType("ListManager.Command.ListCommand", true));
+			this.commandDictionary.Add("load", Type.GetType("ListManager.Command.LoadCommand", true));
+			this.commandDictionary.Add("path", Type.GetType("ListManager.Command.PathCommand", true));
+			this.commandDictionary.Add("remove", Type.GetType("ListManager.Command.RemoveCommand", true));
+			this.commandDictionary.Add("save", Type.GetType("ListManager.Command.SaveCommand", true));
+			this.commandDictionary.Add("sort", Type.GetType("ListManager.Command.SortCommand", true));
+			this.commandDictionary.Add("exit", Type.GetType("ListManager.Command.ExitCommand", true));
+			this.commandDictionary.Add("quit", Type.GetType("ListManager.Command.QuitCommand", true));
 		}
 
 		private void Execute(ICommand command, string[] args)

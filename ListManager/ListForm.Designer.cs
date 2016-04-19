@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace ListManagerApp
+namespace ListManager
 {
 	partial class ListForm
 	{
