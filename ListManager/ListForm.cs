@@ -84,8 +84,8 @@ namespace ListManager
 		private void ShowWarningBox(Exception e)
 		{
 			string message = e.Message;
-			string caption = e.Message;
-			MessageBoxButtons buttons = MessageBoxButtons.OK;
+			string caption = "Error";
+			MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
 			MessageBox.Show(message, caption, buttons);
 		}
 
