@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reflection
@@ -26,11 +22,11 @@ namespace Reflection
 
 		private void SearchBaseType(Type type)
 		{
-			if (type.BaseType == null)
+			if ((type.BaseType == null) || OBJECT_TYPE.Equals((type.BaseType.FullName)))
 			{
 				return;
 			}
-			else if (type.BaseType.FullName.Equals(CONTROL_TYPE))
+			else if (type.BaseType.BaseType.FullName.Equals(CONTROL_TYPE))
 			{
 				this._controls.Add(type);
 			}
@@ -51,17 +47,23 @@ namespace Reflection
 			}
 		}
 
-		private void Reflection_Load(object sender, EventArgs e)
-		{
-			ShowLoadDialog();
-		}
-
 		private DialogResult ShowWarningBox(Exception e)
 		{
 			string message = e.Message;
 			string caption = "Error";
 			MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
 			return MessageBox.Show(message, caption, buttons);
+		}
+
+		private void RefreshListBox()
+		{
+			BindingControlsHashSet.DataSource = null;
+			FieldListBox.DataSource = null;
+			MethodsListBox.DataSource = null;
+			EventsListBox.DataSource = null;
+			AttributesListBox.DataSource = null;
+			PropertiesListBox.DataSource = null;
+			ExampleGroupBox.Controls.Clear();
 		}
 
 		private void ShowLoadDialog()
@@ -73,6 +75,8 @@ namespace Reflection
 				try
 				{
 					Assembly assembly = Assembly.LoadFrom(OpenBuildDialog.FileName);
+					this._controls.Clear();
+					RefreshListBox();
 					SearchControls(assembly);
 				}
 				catch (BadImageFormatException bif)
@@ -98,7 +102,25 @@ namespace Reflection
 
 		private void ControlsListBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			this._selectedType = this._controls.ElementAt(ControlsListBox.SelectedIndex);
+			if (ControlsListBox.SelectedIndex >= 0 && ControlsListBox.SelectedIndex < this._controls.Count)
+			{
+				this._selectedType = this._controls.ElementAt(ControlsListBox.SelectedIndex);
+				FieldListBox.DataSource = this._selectedType.GetFields(BindingFlags.Public |
+																		BindingFlags.NonPublic |
+																		BindingFlags.DeclaredOnly |
+																		BindingFlags.Static |
+																		BindingFlags.Instance);
+				MethodsListBox.DataSource = this._selectedType.GetMethods();
+				EventsListBox.DataSource = this._selectedType.GetEvents();
+				AttributesListBox.DataSource = this._selectedType.GetCustomAttributes();
+				PropertiesListBox.DataSource = this._selectedType.GetProperties();
+				ExampleGroupBox.Controls.Clear();
+				Control control = (Control) Activator.CreateInstance(this._selectedType);
+				control.Text = this._selectedType.Name;
+				control.Location = new Point(ExampleGroupBox.Size.Width/2 - control.Size.Width/2, 
+											ExampleGroupBox.Size.Height/2 - control.Size.Height/2);
+				ExampleGroupBox.Controls.Add(control);
+			}
 		}
 
 		private void LoadButton_Click(object sender, EventArgs e)
