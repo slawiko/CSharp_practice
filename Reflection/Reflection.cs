@@ -143,5 +143,10 @@ namespace Reflection
 				xml.GetRepresentation().Save(SaveXMLDialog.FileName);
 			}
 		}
+
+		private void LoadXMLButton_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

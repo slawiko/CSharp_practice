@@ -52,6 +52,7 @@
 			this.LoadXMLButton = new System.Windows.Forms.Button();
 			this.GeneralTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.SaveXMLDialog = new System.Windows.Forms.SaveFileDialog();
+			this.LoadXMLDialog = new System.Windows.Forms.OpenFileDialog();
 			this.ControlsGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BindingControlsHashSet)).BeginInit();
 			this.DetailsGroupBox.SuspendLayout();
@@ -309,6 +310,7 @@
 			this.LoadXMLButton.TabIndex = 3;
 			this.LoadXMLButton.Text = "Load XML";
 			this.LoadXMLButton.UseVisualStyleBackColor = true;
+			this.LoadXMLButton.Click += new System.EventHandler(this.LoadXMLButton_Click);
 			// 
 			// GeneralTableLayoutPanel
 			// 
@@ -327,6 +329,14 @@
 			this.GeneralTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.GeneralTableLayoutPanel.Size = new System.Drawing.Size(923, 401);
 			this.GeneralTableLayoutPanel.TabIndex = 2;
+			// 
+			// SaveXMLDialog
+			// 
+			this.SaveXMLDialog.DefaultExt = "xml";
+			// 
+			// LoadXMLDialog
+			// 
+			this.LoadXMLDialog.FileName = "openFileDialog1";
 			// 
 			// Reflection
 			// 
@@ -376,6 +386,7 @@
 		private System.Windows.Forms.Button ExitButton;
 		private System.Windows.Forms.TableLayoutPanel GeneralTableLayoutPanel;
 		private System.Windows.Forms.SaveFileDialog SaveXMLDialog;
+		private System.Windows.Forms.OpenFileDialog LoadXMLDialog;
 	}
 }
 
