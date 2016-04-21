@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Reflection
 {
@@ -131,6 +132,16 @@ namespace Reflection
 		private void ExitButton_Click(object sender, EventArgs e)
 		{
 			Environment.Exit(0);
+		}
+
+		private void SaveXMLButton_Click(object sender, EventArgs e)
+		{
+			XMLTypeRepresenter xml = new XMLTypeRepresenter(this._selectedType);
+			DialogResult result = SaveXMLDialog.ShowDialog();
+			if (result == DialogResult.OK)
+			{
+				xml.GetRepresentation().Save(SaveXMLDialog.FileName);
+			}
 		}
 	}
 }

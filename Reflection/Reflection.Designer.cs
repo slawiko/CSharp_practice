@@ -46,11 +46,12 @@
 			this.ExampleGroupBox = new System.Windows.Forms.GroupBox();
 			this.MethodsGroupBox = new System.Windows.Forms.GroupBox();
 			this.MethodsListBox = new System.Windows.Forms.ListBox();
-			this.LoadBuildButton = new System.Windows.Forms.Button();
-			this.LoadXMLButton = new System.Windows.Forms.Button();
-			this.SaveXMLButton = new System.Windows.Forms.Button();
 			this.ExitButton = new System.Windows.Forms.Button();
+			this.LoadBuildButton = new System.Windows.Forms.Button();
+			this.SaveXMLButton = new System.Windows.Forms.Button();
+			this.LoadXMLButton = new System.Windows.Forms.Button();
 			this.GeneralTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.SaveXMLDialog = new System.Windows.Forms.SaveFileDialog();
 			this.ControlsGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.BindingControlsHashSet)).BeginInit();
 			this.DetailsGroupBox.SuspendLayout();
@@ -266,6 +267,17 @@
 			this.MethodsListBox.Size = new System.Drawing.Size(212, 121);
 			this.MethodsListBox.TabIndex = 0;
 			// 
+			// ExitButton
+			// 
+			this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.ExitButton.Location = new System.Drawing.Point(606, 366);
+			this.ExitButton.Name = "ExitButton";
+			this.ExitButton.Size = new System.Drawing.Size(75, 23);
+			this.ExitButton.TabIndex = 5;
+			this.ExitButton.Text = "Exit";
+			this.ExitButton.UseVisualStyleBackColor = true;
+			this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+			// 
 			// LoadBuildButton
 			// 
 			this.LoadBuildButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -277,36 +289,26 @@
 			this.LoadBuildButton.UseVisualStyleBackColor = true;
 			this.LoadBuildButton.Click += new System.EventHandler(this.LoadBuildButton_Click);
 			// 
-			// LoadXMLButton
-			// 
-			this.LoadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.LoadXMLButton.Location = new System.Drawing.Point(384, 366);
-			this.LoadXMLButton.Name = "LoadXMLButton";
-			this.LoadXMLButton.Size = new System.Drawing.Size(75, 23);
-			this.LoadXMLButton.TabIndex = 3;
-			this.LoadXMLButton.Text = "Load XML";
-			this.LoadXMLButton.UseVisualStyleBackColor = true;
-			// 
 			// SaveXMLButton
 			// 
 			this.SaveXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.SaveXMLButton.Location = new System.Drawing.Point(465, 366);
+			this.SaveXMLButton.Location = new System.Drawing.Point(411, 366);
 			this.SaveXMLButton.Name = "SaveXMLButton";
 			this.SaveXMLButton.Size = new System.Drawing.Size(75, 23);
 			this.SaveXMLButton.TabIndex = 4;
 			this.SaveXMLButton.Text = "Save XML";
 			this.SaveXMLButton.UseVisualStyleBackColor = true;
+			this.SaveXMLButton.Click += new System.EventHandler(this.SaveXMLButton_Click);
 			// 
-			// ExitButton
+			// LoadXMLButton
 			// 
-			this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.ExitButton.Location = new System.Drawing.Point(606, 366);
-			this.ExitButton.Name = "ExitButton";
-			this.ExitButton.Size = new System.Drawing.Size(75, 23);
-			this.ExitButton.TabIndex = 5;
-			this.ExitButton.Text = "Exit";
-			this.ExitButton.UseVisualStyleBackColor = true;
-			this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+			this.LoadXMLButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.LoadXMLButton.Location = new System.Drawing.Point(492, 366);
+			this.LoadXMLButton.Name = "LoadXMLButton";
+			this.LoadXMLButton.Size = new System.Drawing.Size(75, 23);
+			this.LoadXMLButton.TabIndex = 3;
+			this.LoadXMLButton.Text = "Load XML";
+			this.LoadXMLButton.UseVisualStyleBackColor = true;
 			// 
 			// GeneralTableLayoutPanel
 			// 
@@ -373,6 +375,7 @@
 		private System.Windows.Forms.Button SaveXMLButton;
 		private System.Windows.Forms.Button ExitButton;
 		private System.Windows.Forms.TableLayoutPanel GeneralTableLayoutPanel;
+		private System.Windows.Forms.SaveFileDialog SaveXMLDialog;
 	}
 }
 
