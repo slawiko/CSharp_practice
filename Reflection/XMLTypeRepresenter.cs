@@ -7,15 +7,11 @@ namespace Reflection
 {
 	class XMLTypeRepresenter
 	{
-		private Type _type;
-		private XElement _xml;
-
-		public XMLTypeRepresenter(Type type)
+		public XMLTypeRepresenter()
 		{
-			this._type = type;
 		}
 
-		private void MakeRepresentation()
+		private static XElement MakeRepresentation(Type type)
 		{
 			List<XElement> methods = new List<XElement>();
 			List<XElement> events = new List<XElement>();
@@ -23,11 +19,11 @@ namespace Reflection
 			List<XElement> attributes = new List<XElement>();
 			List<XElement> fields = new List<XElement>();
 
-			foreach (var m in this._type.GetMethods())
+			foreach (var m in type.GetMethods())
 			{
 				methods.Add(new XElement("Method", m));
 			}
-			foreach (var f in this._type.GetFields(BindingFlags.Public |
+			foreach (var f in type.GetFields(BindingFlags.Public |
 														BindingFlags.NonPublic |
 														BindingFlags.DeclaredOnly |
 														BindingFlags.Static |
@@ -35,34 +31,40 @@ namespace Reflection
 			{
 				fields.Add(new XElement("Field", f));
 			}
-			foreach (var e in this._type.GetEvents())
+			foreach (var e in type.GetEvents())
 			{
 				events.Add(new XElement("Event", e));
 			}
-			foreach (var p in this._type.GetProperties())
+			foreach (var p in type.GetProperties())
 			{
 				properties.Add(new XElement("Property", p));
 			}
-			foreach (var a in this._type.GetCustomAttributes())
+			foreach (var a in type.GetCustomAttributes())
 			{
 				attributes.Add(new XElement("Attribute", a));
 			}
 
-			this._xml = 
+			XElement xml = 
 				new XElement("Class",
-					new XElement("Name", this._type.Name),
+					new XElement("Name", type.FullName),
 					new XElement("Methods", methods.ToArray()),
 					new XElement("Properties", properties.ToArray()),
 					new XElement("Attirbutes", attributes.ToArray()),
 					new XElement("Fields", fields.ToArray()),
 					new XElement("Events", events.ToArray())
 				);
+
+			return xml;
 		}
 
-		public XElement GetRepresentation()
+		public static XElement GetRepresentation(Type type)
 		{
-			MakeRepresentation();
-			return this._xml;
+			return MakeRepresentation(type);
+		}
+
+		public static Type GetType(XElement xml)
+		{
+			return Type.GetType(xml.Element("Name").Value);
 		}
 	}
 }

@@ -136,17 +136,22 @@ namespace Reflection
 
 		private void SaveXMLButton_Click(object sender, EventArgs e)
 		{
-			XMLTypeRepresenter xml = new XMLTypeRepresenter(this._selectedType);
 			DialogResult result = SaveXMLDialog.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				xml.GetRepresentation().Save(SaveXMLDialog.FileName);
+				XMLTypeRepresenter.GetRepresentation(this._selectedType).Save(SaveXMLDialog.FileName);
 			}
 		}
 
 		private void LoadXMLButton_Click(object sender, EventArgs e)
 		{
-
+			DialogResult result = LoadXMLDialog.ShowDialog();
+			if (result == DialogResult.OK)
+			{
+				RefreshListBox();
+				this._controls.Clear();
+				this._controls.Add(XMLTypeRepresenter.GetType(XElement.Load(LoadXMLDialog.FileName)));
+			}
 		}
 	}
 }
