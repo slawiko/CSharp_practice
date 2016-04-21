@@ -145,6 +145,7 @@ namespace Reflection
 
 		private void LoadXMLButton_Click(object sender, EventArgs e)
 		{
+			OpenBuildDialog.Filter = "XML files (.xml)|*.xml";
 			DialogResult result = LoadXMLDialog.ShowDialog();
 			if (result == DialogResult.OK)
 			{
