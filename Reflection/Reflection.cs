@@ -123,9 +123,14 @@ namespace Reflection
 			}
 		}
 
-		private void LoadButton_Click(object sender, EventArgs e)
+		private void LoadBuildButton_Click(object sender, EventArgs e)
 		{
 			ShowLoadDialog();
+		}
+
+		private void ExitButton_Click(object sender, EventArgs e)
+		{
+			Environment.Exit(0);
 		}
 	}
 }
