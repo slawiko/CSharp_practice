@@ -151,7 +151,16 @@ namespace Reflection
 			{
 				RefreshListBox();
 				this._controls.Clear();
-				this._controls.Add(XMLTypeRepresenter.GetType(XElement.Load(LoadXMLDialog.FileName)));
+				CustomType type = XMLTypeRepresenter.GetType(XElement.Load(LoadXMLDialog.FileName));
+
+				List<string> controls = new List<string>();
+				controls.Add(type.FullName);
+				ControlsListBox.DataSource = controls;
+				FieldListBox.DataSource = type.GetFields();
+				MethodsListBox.DataSource = type.GetMethods();
+				EventsListBox.DataSource = type.GetEvents();
+				AttributesListBox.DataSource = type.GetAttributes();
+				PropertiesListBox.DataSource = type.GetProperties();
 			}
 		}
 	}

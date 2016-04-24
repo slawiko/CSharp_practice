@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -49,7 +50,7 @@ namespace Reflection
 					new XElement("Name", type.FullName),
 					new XElement("Methods", methods.ToArray()),
 					new XElement("Properties", properties.ToArray()),
-					new XElement("Attirbutes", attributes.ToArray()),
+					new XElement("Attributes", attributes.ToArray()),
 					new XElement("Fields", fields.ToArray()),
 					new XElement("Events", events.ToArray())
 				);
@@ -62,9 +63,27 @@ namespace Reflection
 			return MakeRepresentation(type);
 		}
 
-		public static Type GetType(XElement xml)
+		private static List<string> GetFields(List<XElement> list, string nodeName)
 		{
-			return Type.GetType(xml.Element("Name").Value);
+			List<string> fields = new List<string>();
+			foreach (var node in list)
+			{
+				fields.Add(node.Value);
+			}
+
+			return fields;
+		}
+
+		public static CustomType GetType(XElement xml)
+		{
+			CustomType type = new CustomType(xml.Element("Name").Value);
+			type.SetMethods(GetFields(xml.Element("Methods").Elements().ToList(), "Method"));
+			type.SetFields(GetFields(xml.Element("Fields").Elements().ToList(), "Field"));
+			type.SetProperties(GetFields(xml.Element("Properties").Elements().ToList(), "Property"));
+			type.SetAttributes(GetFields(xml.Element("Attributes").Elements().ToList(), "Attribute"));
+			type.SetEvents(GetFields(xml.Element("Events").Elements().ToList(), "Event"));
+
+			return type;
 		}
 	}
 }
