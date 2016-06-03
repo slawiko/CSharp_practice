@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{5BB5F6B2-C4B1-473C-BD37-70243CF40C46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListManager", "ListManager\ListManager.csproj", "{6836E60B-7C48-4BFA-B03D-0E7333D1F30E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF", "WCF\WCF.csproj", "{2F546C6A-95DE-475F-BEF3-12A23D45F17D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6836E60B-7C48-4BFA-B03D-0E7333D1F30E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6836E60B-7C48-4BFA-B03D-0E7333D1F30E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6836E60B-7C48-4BFA-B03D-0E7333D1F30E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F546C6A-95DE-475F-BEF3-12A23D45F17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F546C6A-95DE-475F-BEF3-12A23D45F17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F546C6A-95DE-475F-BEF3-12A23D45F17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F546C6A-95DE-475F-BEF3-12A23D45F17D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
