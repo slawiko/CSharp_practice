@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exchange rates</title>
+
+    <link rel="stylesheet" type="text/css" href="resources/css/vendors/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/vendors/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/vendors/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+</head>
+
+<body>
+
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h1>Exchange rates</h1>
+                    <form id="search-form" class="form-inline" role="form">
+                        <div class="row row-flex">
+                            <div class="col-lg-12">
+                                <div class="dropdown cur-dropdown" id="source">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Source
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu"></ul>
+                                </div>
+                                <button type="button" id="swapBtn" class="btn btn-warning btn-lg swap-btn">
+                                    <span class="glyphicon glyphicon-resize-horizontal" style="vertical-align:middle" aria-hidden="true">
+                                    </span>
+                                </button>
+                                <div class="dropdown cur-dropdown" id="target">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Target
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input id="startDate" class="form-control" type="text">
+                                <input id="endDate" class="form-control" type="text">
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" id="searchBtn" class="btn btn-warning btn-lg search-btn">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /col-lg-9 -->
+                <div class="col-lg-3">
+                    <img class="img-responsive hidden-xs hidden-sm" src="resources/img/how-it-works-search.png" alt="">
+                </div><!-- /col-lg-3 -->
+
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /headerwrap -->
+
+
+    <div id="result" class="container">
+        <div class="row mt centered">
+
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1 id="searchResultsHeader">Your search results will be here</h1>
+                <a href="#" id="dayRates"></a>
+
+                <div id="searchResults">
+                    <table id="searchResult" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Source currency</th>
+                                <th>Target currency</th>
+                                <th>Exchange rate</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="resources/js/vendors/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="resources/js/vendors/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/vendors/notify.min.js"></script>
+    <script type="text/javascript" src="resources/js/vendors/datatables.min.js"></script>
+    <script type="text/javascript" src="resources/js/vendors/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="resources/js/main.js"></script>
+</body>
+</html>
+

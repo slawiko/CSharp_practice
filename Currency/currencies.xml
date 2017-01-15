@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<currencies>
+  <currency name="RUB">
+	<targets>
+		<target name="USD">
+    			<rates>
+      			<rate date="28.05.2016">243.5</rate>
+      			<rate date="29.05.2016">188.9</rate>
+    			</rates>
+		</target>
+		<target name="BYR">
+    			<rates>
+      			<rate date="21.05.2016">100</rate>
+      			<rate date="22.05.2016">200</rate>
+      			<rate date="23.05.2016">300</rate>
+    			</rates>
+		</target>
+	</targets>
+  </currency>
+  <currency name="USD">
+	<targets>
+		<target name="USD">
+    			<rates>
+      			<rate date="20.04.2016">100</rate>
+      			<rate date="01.05.2016">200</rate>
+      			<rate date="26.05.2016">300</rate>
+      			<rate date="28.05.2016">50</rate>
+    			</rates>
+		</target>
+	</targets>
+  </currency>
+</currencies>
